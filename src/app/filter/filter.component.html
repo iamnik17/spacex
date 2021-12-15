@@ -1,0 +1,30 @@
+<!-- <h3>Datepicker Start View</h3>
+<form [formGroup]="studentForm" (ngSubmit)="onFormSubmit()">
+  <mat-form-field>
+    <mat-label>Student Name</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+  <br/>
+  <mat-form-field appearance="fill">
+    <mat-label>Date of Birth</mat-label>
+    <input matInput [matDatepicker]="dob" formControlName="dateOfBirth">
+    <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+    <mat-datepicker #dob 
+       startView="multi-year"
+       (yearSelected)="handleYearSelected($event)"
+       (monthSelected)="handleMonthSelected($event)" >
+    </mat-datepicker>
+  </mat-form-field>
+  <br/>
+  <mat-form-field appearance="fill">
+    <mat-label>Admission Date Range</mat-label>
+    <mat-date-range-input [rangePicker]="admDateRangePicker"  formGroupName="admDateRange">
+      <input matStartDate formControlName="startDate" placeholder="Start date">
+      <input matEndDate formControlName="endDate" placeholder="End date">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="admDateRangePicker"></mat-datepicker-toggle>
+    <mat-date-range-picker #admDateRangePicker startView="year"></mat-date-range-picker>
+  </mat-form-field>
+  <br/><br/>
+  <button mat-raised-button>Submit</button>
+</form>  -->
