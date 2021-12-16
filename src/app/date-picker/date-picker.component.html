@@ -1,5 +1,6 @@
  <div class="container ">
-<div class="col-xl-2">
+     <div class="row">
+<div class="col-xl-12">
     <i class="fa fa-calendar" aria-hidden="true">
         <input type="text"
         ngxDaterangepickerMd
@@ -10,15 +11,15 @@
         [isInvalidDate] = "isInvalidDate"
         [showClearButton]="true"
          [(ngModel)]="selected"
+         (change)="dateRangeCreated($event)" 
         placeholder="Select a date..."/>
-         <a class="ngx-daterangepicker-action" (click)="openDatepicker($event)">
-            hlp
-          </a> 
+          
     </i>
+    <!-- {{selected.startDate._d}} -->
    
- <!-- {{selected}} -->
+ 
    
-  
+</div>
  </div>
  </div> 
  <!-- <ngb-datepicker [displayMonths]="displayMonths" [navigation]="navigation"
