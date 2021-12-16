@@ -1,8 +1,8 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-app.use(express.static(__dirname + "/dist/space-xdashboard"));
+app.use(express.static(__dirname + "/dist/SpaceXDashboard"));
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname + "/dist/space-xdashboard/index.html"));
+  res.sendFile(path.join(__dirname + "/dist/SpaceXDashboard/index.html"));
 });
 app.listen(process.env.PORT || 8080);
