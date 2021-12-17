@@ -49,6 +49,7 @@ export class LaunchesComponent implements OnInit {
     
   ngOnInit(): void {
     this.getlaunches();
+    
   }
 
   mouseEnter(input : any){
