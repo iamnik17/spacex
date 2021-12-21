@@ -1,8 +1,8 @@
 <!-- <p>launches works!</p> -->
 
-<div class="container" style="width: 100%;">
+<div class="container" style="width: 1300px; overflow-y: hidden;">
   <!-- <app-date-picker class="date"  (date)="datechange($event)"></app-date-picker> -->
-              <div class="col-xl-12">
+              <div class="col-xl-12" style="top: 50px; bottom: -10px;" >
               <i class="fa fa-calendar" aria-hidden="true">
                   <input type="text"
                   ngxDaterangepickerMd
@@ -21,8 +21,9 @@
 
 
         <div class="row">
-          <span  class="lanch col-sm-2">All Launches</span>
-          <app-filter class="btn col-sm-2"style="color:gray"
+          <span style="bottom: 50px;margin-left: 900px; " class="lanch col-xl-6">All Launches</span>
+          <app-filter class="btn col-sm-2"style="color:gray; position: absolute; left:145px;bottom:610px"
+
           [list]="filterList" 
           (onFilterChange)="filterChange($event)" >
           </app-filter> 
@@ -32,15 +33,15 @@
   <table class="table" style="width:100%; table-layout: fixed;">
  
     <thead >
-      
-        <th  style="width: 121px;" > No.  </th>
-        <th  style="width: 121px;">Launch (UTC)</th>
+      <tr>
+        <th  style="width: 51px;" > No.  </th>
+        <th  style="width: 131px;">Launch (UTC)</th>
         <th style="width: 121px;">Location</th> 
         <th style="width: 90px;"> Mission</th>
         <th style="width: 100px;">Orbit</th>
         <th style="width: 100px;"> Launches Status</th>
-        <th style="width: 150px;"> Rocket </th>
-      
+        <th style="width: 100px;"> Rocket </th>
+      </tr>
    
     </thead>
 
@@ -53,7 +54,7 @@
         <td>{{ans.launch_site.site_name}}</td>
         <td>{{ans.mission_name}}</td>
         <td>{{ans['rocket']['second_stage']['payloads'][0]['orbit']}}</td>
-        <td class="badge" [ngClass]="{'danger':(!ans.launch_success && !ans.upcoming),'success':ans.launch_success,'warning':ans.upcoming}">{{ans.upcoming === true?
+        <td style="margin-left: 20px;" class="badge"  [ngClass]="{'danger':(!ans.launch_success && !ans.upcoming),'success':ans.launch_success,'warning':ans.upcoming}">{{ans.upcoming === true?
           'Upcoming' : ans.launch_success === true ?'Success':'failed'}}</td>
         <td>{{ans.rocket.rocket_name}}</td>
         

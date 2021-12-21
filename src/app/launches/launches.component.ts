@@ -173,11 +173,13 @@ dateRangeCreated(event:any){
 // this.launcheservice.getlaunchesData(this.selected.startDate._d.toLocaleDateString(),this.selected.endDate._d.toLocaleDateString()).subscribe(
 //   x=>     this.filter =this.launches = x
 // )
-    // console.log(this.selected.startDate._d.toLocaleDateString());
-    // console.log(this.selected.endDate._d.toLocaleDateString());
-    
+   
   this.routebyfilter(event.startDate._d.toLocaleDateString(),event.endDate._d.toLocaleDateString());
-
+  // this.launcheservice.getlaunchesData(this.selected.startDate._d.toLocaleDateString(),this.selected.endDate._d.toLocaleDateString()).subscribe(
+  //     x=>     this.filter =this.launches = x
+  //     )
+  //     console.log(this.filter);
+      
 }
 routebyfilter(start?:any, end?:any){
   if(start !== undefined){

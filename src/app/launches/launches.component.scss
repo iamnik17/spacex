@@ -13,9 +13,15 @@ align-items: center;
 
 color: #1F2937;
 }
+.table-responsive{
+  overflow-y: hidden;
+}
 .table-container {
     background-color: #fff;
     box-shadow: 0 2px 5px 0 rgba(255,255,255);
+    position: fixed;
+    overflow-y: hidden;
+
   }
   
   table {
