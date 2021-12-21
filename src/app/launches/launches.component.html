@@ -1,60 +1,53 @@
 <!-- <p>launches works!</p> -->
 
-<div class="container">
-  <!-- <div class="row" *ngFor="let item of data | slice:0:6; let i = index" id="{{i}}" (mouseenter)="mouseEnter(i)"
-  (mouseleave)="mouseLeave(i)">
-  <div class="col col2">
-    <span>{{item.mission_name}}</span>
-    <ng-container *ngIf="active===i">
-       <app-dropdowndata class="dropdown" title="Actions" input="1"></app-dropdowndata> 
-    </ng-container>
-  </div> -->
-  <span class="btn">All Launches</span>
-   <app-filter class="btn"style="color:gray"
-  [list]="filterList" 
-  (onFilterChange)="filterChange($event)" >
-</app-filter> 
-<!-- <button (click)="open()"></button> -->
-<!-- DropDown -->
+<div class="container" style="width: 100%;">
+  <!-- <app-date-picker class="date"  (date)="datechange($event)"></app-date-picker> -->
+              <div class="col-xl-12">
+              <i class="fa fa-calendar" aria-hidden="true">
+                  <input type="text"
+                  ngxDaterangepickerMd
+                [showCustomRangeLabel]="true"
+                  [alwaysShowCalendars]="true"
+                  [ranges]="ranges"
+                  [linkedCalendars]="true"
+                  [isInvalidDate] = "isInvalidDate"
+                  [showClearButton]="true"
+                  (change)="dateRangeCreated($event)" 
+                  placeholder="Select a date..."/>
 
-<!-- ////***//// -->
-<!-- <div class="col-md-4 launch">
-  <div class="btn-group" dropdown>
-    <a id="button-basic" dropdownToggle type="button" class="btn-light dropdown-toggle"
-      aria-controls="dropdown-basic"><i class="fa fa-filter"></i>
-      {{launch_type}} <span class="caret"></span> 
-    </a>
-    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-      <li role="menuitem"><a class="dropdown-item" (click)="launchType('All Launches')">All
-          Launches</a></li>
-      <li role="menuitem"><a class="dropdown-item" (click)="launchType('Upcoming Launches')">Upcoming
-          Launches</a></li>
-      <li role="menuitem"><a class="dropdown-item" (click)="launchType('Successful Launches')">Successful
-          Launches</a></li>
+              </i>
+              <!-- {{selected.startDate._d}} -->
+              </div>
 
-      <li role="menuitem"><a class="dropdown-item" (click)="launchType('Failed Launches')">Failed
-          Launches</a>
-      </li>
-    </ul>
-  </div>
-</div> -->
-<table>
+
+        <div class="row">
+          <span  class="lanch col-sm-2">All Launches</span>
+          <app-filter class="btn col-sm-2"style="color:gray"
+          [list]="filterList" 
+          (onFilterChange)="filterChange($event)" >
+          </app-filter> 
+        </div>
+
+<div class="table-responsive">
+  <table class="table" style="width:100%; table-layout: fixed;">
  
-    <thead>
-      <tr>
-        <th class="row-flight-number"><a > No. </a> </th>
-        <th>Launch (UTC)</th>
-        <th>Location</th> 
-        <th> Mission</th>
-        <th>Orbit</th>
-        <th> Launches Status</th>
-        <th> Rocket </th>
-      </tr>
+    <thead >
+      
+        <th  style="width: 121px;" > No.  </th>
+        <th  style="width: 121px;">Launch (UTC)</th>
+        <th style="width: 121px;">Location</th> 
+        <th style="width: 90px;"> Mission</th>
+        <th style="width: 100px;">Orbit</th>
+        <th style="width: 100px;"> Launches Status</th>
+        <th style="width: 150px;"> Rocket </th>
+      
+   
     </thead>
+
     <tbody>
       <tr *ngFor="let ans of filter  | paginate: { itemsPerPage: 10, currentPage: page,totalItems:totalLength }
      " (click)="modal(template,ans)">
-        <td>{{ans.flight_number}}</td>
+        <td style="overflow: hidden; text-overflow: ellipsis;">{{ans.flight_number}}</td>
         <td>{{ans.launch_date_utc | date : 'd MMMM y'}} {{ans.launch_date_utc | date :
           'HH:mm'}}</td>
         <td>{{ans.launch_site.site_name}}</td>
@@ -65,18 +58,21 @@
         <td>{{ans.rocket.rocket_name}}</td>
         
      </tr>
-     
+    </tbody>
      <!-- <ng-container *ngif="active===i"> -->
       <!-- <app-dropdowndata class="dropdown" title="Actions" input="1"></app-dropdowndata> -->
     <!-- </ng-container> -->
-     <pagination-controls class="pagination" (pageChange)="page = $event"></pagination-controls>
+     
 
-    </tbody>
+    
     <!-- loader -->
-    <div class="card-body" *ngIf="loading">
-      <div id="preloader"></div>
-    </div>
+            <div class="card-body" *ngIf="loading">
+              <div id="preloader"></div>
+            </div>
+  </table>
+</div>
 
+<pagination-controls class="pagination " (pageChange)="page = $event"></pagination-controls>
     <!-- </div> -->
     <ng-template #template>
       <div class="modal-header">
@@ -85,9 +81,9 @@
           <span aria-hidden="true" class="visually-hidden">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body table-responsive">
         <!-- {{details.launch_success}} -->
-        <table class="row">
+        <table class="row table">
           <div class="col-xl-3">
         <img class="img"    src="{{details.links.mission_patch}}">
         </div>
@@ -169,3 +165,4 @@
         
       </div>
     </ng-template>
+   </div>

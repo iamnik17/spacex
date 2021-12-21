@@ -13,15 +13,58 @@ export class LaunchesdataService {
   list: Launches[] = [];
   // nrOfFlights: Subject<number> = new Subject<number>();
   data: Subject<Launches[]> = new Subject<Launches[]>();
-  url:string="https://api.spacexdata.com/v3/launches/"
-  getlaunchesData(){
-    return this.http.get<Launches[]>(
-      this.url
-    );
-   
-    // + `offset=${offset}&limit=${limit}`
-    }
-  }
-  
-  
 
+  getlaunchesData(start?:string,end?: string){
+    if(start === undefined)
+    {
+    return this.http.get<Launches[]>('https://api.spacexdata.com/v3/launches');
+   }else 
+    {
+   return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches?start=${start}&end=${end}`)
+   }
+    
+  }
+
+  failed(start?:string,end?: string){
+    if(start === undefined)
+    {
+    return this.http.get<Launches[]>('https://api.spacexdata.com/v3/launches');
+   }else 
+    {
+   return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches?launch_success=${false}`)
+   }
+   
+    
+  }
+  success(start?:string,end?: string){
+    if(start === undefined)
+    {
+    return this.http.get<Launches[]>('https://api.spacexdata.com/v3/launches');
+   }else 
+    {
+   return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches?launch_success=${true}`)
+   }
+}
+
+upcoming(start?:string,end?: string){
+  if(start === undefined)
+  {
+  return this.http.get<Launches[]>('https://api.spacexdata.com/v3/launches');
+ }else 
+  {
+ return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches/upcoming`)
+ }
+}
+all(start?:string,end?: string){
+  if(start === undefined)
+  {
+  return this.http.get<Launches[]>('https://api.spacexdata.com/v3/launches');
+ }else 
+  {
+ return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches`)
+ }
+}
+
+
+  
+}

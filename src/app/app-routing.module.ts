@@ -4,7 +4,11 @@ import { FilterComponent } from './filter/filter.component';
 import { LaunchesComponent } from './launches/launches.component';
 
 const routes: Routes = [
-  {path:"launches",component:LaunchesComponent},
+  {path:"",component:LaunchesComponent},
+
+  {path:"launches/:start/:end/:launchType",component:LaunchesComponent},
+  {path:"launches/:launchType",component:LaunchesComponent},
+
   {path:"filter",component:FilterComponent}
 ];
 

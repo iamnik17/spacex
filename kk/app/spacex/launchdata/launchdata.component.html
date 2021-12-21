@@ -1,0 +1,288 @@
+<div class="row ">
+    <div class="col-xl-3">
+<div class="filtermonths">
+    <div class="row">
+       <div class="col-xl-1 iclass"><i class="fas fa-calendar" ></i></div><div class="col-xl-4" ><input   class="form-control" type="text"   ngxdaterangepickermd="" ngxDaterangepickerMd  [(ngModel)]="myDate"   (change)="combinefilter(myDate,t.value);selectdatefilter(myDate);" class="form-control"   [ranges]="ranges" [keepCalendarOpeningWithRange]="true"  [alwaysShowCalendars]="true"  [autoApply]="true"    [locale]="{applyLabel: 'ok', format: 'YYYY-MM-DD'}" (rangeClicked)="rangeClicked($event,t.value)" [showDropdowns]="true" (datesUpdated)="datesUpdated($event)" [showRangeLabelOnInput]="showRangeLabelOnInput"  #query/></div><div class="col-xl-1  iclass2"><i class="fas fa-sort-down"  ></i></div>
+</div>
+
+        </div>
+    </div>
+
+
+<div class="col-xl-3">
+<div class="filterlaunches" id="#filter">
+        <i class="fas fa-filter"></i>
+        <select class="nocolor" (change)="combinefilter(myDate,t.value);selectlaunchfilter(t.value,myDate);" #t >
+                 <option value="" >All Launches</option>
+                <option value="upcoming" > Upcoming Launches</option>
+                    <option value="past">Past Launches</option>
+                    <option value="launch_success=true" >SuccessFul Launches</option>
+                    <option value="launch_success=false" >Failed Launches</option>
+            </select>
+            </div>
+
+      
+
+        </div>
+    </div>
+   
+   
+<div class="main">
+<table >
+   
+    <tr class="spacingh header_class">
+        
+<th  class="spacing ">No.</th>
+<th  class="spacing ">Launched(UTC)</th>
+<th  class="spacing">Location</th>
+<th  class="spacing">Mission</th>
+<th  class="spacing">Orbit</th>
+<th  class="spclspacing">Launch Status</th>
+<th class="spacing">Rocket</th>
+    </tr>
+  
+    <td colspan="7"class="text-center" *ngIf="errordiv">
+      {{tablemsg}}
+    </td>
+    <tr class="row_class"  *ngFor="let item of launchdata | paginate: { itemsPerPage: 12, currentPage: p, id: 'first'};let i=index "> 
+      
+        <td class="spacing" data-bs-toggle="modal" data-bs-target="#exampleModal" data-backdrop="static" 
+        data-keyboard="false"   (click)="getflightno($event)" [attr.for]="item.mission_name+'#'+item.rocket.rocket_name
+        +'#'+item.details+'#'+item.launch_success+'#'+item.upcoming+'#'+item.rocket.rocket_type+'#'
+        +item.rocket.second_stage.payloads[0].manufacturer+'#'+item.rocket.second_stage.payloads[0].nationality+'#'
+        +item.rocket.second_stage.payloads[0].orbit+'#'+item.rocket.second_stage.payloads[0].payload_type+'#'
+        +item.links.mission_patch_small+'#'+item.launch_site.site_name+'#'+item.flight_number
+        +'#'+item.links.video_link+'#'+item.links.wikipedia+'#'+item.links.article_link+'#'+item.launch_date_utc">
+            {{item.flight_number}}
+        </td>
+<td  class="spacing" data-bs-toggle="modal" data-bs-target="#exampleModal" data-backdrop="static" 
+data-keyboard="false"   (click)="getflightno($event)" [attr.for]="item.mission_name+'#'+item.rocket.rocket_name
++'#'+item.details+'#'+item.launch_success+'#'+item.upcoming+'#'+item.rocket.rocket_type+'#'
++item.rocket.second_stage.payloads[0].manufacturer+'#'+item.rocket.second_stage.payloads[0].nationality+'#'
++item.rocket.second_stage.payloads[0].orbit+'#'+item.rocket.second_stage.payloads[0].payload_type+'#'
++item.links.mission_patch_small+'#'+item.launch_site.site_name+'#'+item.flight_number
++'#'+item.links.video_link+'#'+item.links.wikipedia+'#'+item.links.article_link+'#'+item.launch_date_utc">
+    {{item.launch_date_utc| date:'dd MMMM YYYY hh:mm'}}
+</td>
+<td  class="spacing" data-bs-toggle="modal" data-bs-target="#exampleModal" data-backdrop="static" 
+data-keyboard="false"   (click)="getflightno($event)" [attr.for]="item.mission_name+'#'+item.rocket.rocket_name
++'#'+item.details+'#'+item.launch_success+'#'+item.upcoming+'#'+item.rocket.rocket_type+'#'
++item.rocket.second_stage.payloads[0].manufacturer+'#'+item.rocket.second_stage.payloads[0].nationality+'#'
++item.rocket.second_stage.payloads[0].orbit+'#'+item.rocket.second_stage.payloads[0].payload_type+'#'
++item.links.mission_patch_small+'#'+item.launch_site.site_name+'#'+item.flight_number
++'#'+item.links.video_link+'#'+item.links.wikipedia+'#'+item.links.article_link+'#'+item.launch_date_utc" >
+    {{item.launch_site.site_name}}
+</td>
+<td  class="spacing" data-bs-toggle="modal" data-bs-target="#exampleModal" data-backdrop="static" 
+data-keyboard="false"   (click)="getflightno($event)" [attr.for]="item.mission_name+'#'+item.rocket.rocket_name
++'#'+item.details+'#'+item.launch_success+'#'+item.upcoming+'#'+item.rocket.rocket_type+'#'
++item.rocket.second_stage.payloads[0].manufacturer+'#'+item.rocket.second_stage.payloads[0].nationality+'#'
++item.rocket.second_stage.payloads[0].orbit+'#'+item.rocket.second_stage.payloads[0].payload_type+'#'
++item.links.mission_patch_small+'#'+item.launch_site.site_name+'#'+item.flight_number
++'#'+item.links.video_link+'#'+item.links.wikipedia+'#'+item.links.article_link+'#'+item.launch_date_utc" >
+    {{item.mission_name}}
+</td>
+
+<td  class="spacing" data-bs-toggle="modal" data-bs-target="#exampleModal" data-backdrop="static" 
+data-keyboard="false"   (click)="getflightno($event)" [attr.for]="item.mission_name+'#'+item.rocket.rocket_name
++'#'+item.details+'#'+item.launch_success+'#'+item.upcoming+'#'+item.rocket.rocket_type+'#'
++item.rocket.second_stage.payloads[0].manufacturer+'#'+item.rocket.second_stage.payloads[0].nationality+'#'
++item.rocket.second_stage.payloads[0].orbit+'#'+item.rocket.second_stage.payloads[0].payload_type+'#'
++item.links.mission_patch_small+'#'+item.launch_site.site_name+'#'+item.flight_number
++'#'+item.links.video_link+'#'+item.links.wikipedia+'#'+item.links.article_link+'#'+item.launch_date_utc">
+    {{item.rocket.second_stage.payloads[0].orbit}}
+</td>
+
+<td  class="spclspacing" id="status" data-bs-toggle="modal" data-bs-target="#exampleModal" data-backdrop="static" 
+data-keyboard="false"   (click)="getflightno($event)" [attr.for]="item.mission_name+'#'+item.rocket.rocket_name
++'#'+item.details+'#'+item.launch_success+'#'+item.upcoming+'#'+item.rocket.rocket_type+'#'
++item.rocket.second_stage.payloads[0].manufacturer+'#'+item.rocket.second_stage.payloads[0].nationality+'#'
++item.rocket.second_stage.payloads[0].orbit+'#'+item.rocket.second_stage.payloads[0].payload_type+'#'
++item.links.mission_patch_small+'#'+item.launch_site.site_name+'#'+item.flight_number
++'#'+item.links.video_link+'#'+item.links.wikipedia+'#'+item.links.article_link+'#'+item.launch_date_utc" >
+ <section [ngClass]="item.upcoming ? 'upcomingcol':item.launch_success?'launchsuccol':'launchfail'">
+    {{item.upcoming==true? 'Upcoming'
+:item.launch_success==true?'Success'
+    :'Failed'}}
+</section> </td>
+ 
+<td  class="spacing" data-bs-toggle="modal" data-bs-target="#exampleModal" data-backdrop="static" 
+data-keyboard="false"   (click)="getflightno($event)" [attr.for]="item.mission_name+'#'+item.rocket.rocket_name
++'#'+item.details+'#'+item.launch_success+'#'+item.upcoming+'#'+item.rocket.rocket_type+'#'
++item.rocket.second_stage.payloads[0].manufacturer+'#'+item.rocket.second_stage.payloads[0].nationality+'#'
++item.rocket.second_stage.payloads[0].orbit+'#'+item.rocket.second_stage.payloads[0].payload_type+'#'
++item.links.mission_patch_small+'#'+item.launch_site.site_name+'#'+item.flight_number
++'#'+item.links.video_link+'#'+item.links.wikipedia+'#'+item.links.article_link+'#'+item.launch_date_utc">
+    {{item.rocket.rocket_name}}
+</td>
+<!--View Launch Details Modal Box Starts-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" >
+      <div class="modal-content" >
+        <div class="modal-header">
+         
+               <div class="col-xl-11" >
+                   <div class="row" >
+                   <div class="col-xl-2">
+               <img  class="img-logo" src="{{mission_patch_small}}" />
+            
+            </div>
+            
+            <div class="col-xl-10">
+                <div class="row">
+                <div class="col-xl-6">
+                    <h4>{{mission_name}} </h4> 
+                </div>
+               
+              
+                <div class="spclspacing2" [ngClass]="this.msg=='Upcoming'? 'upcomingcol':this.msg=='Success'?'launchsuccol':'launchfail'">
+                    {{msg}}  
+               
+               </div>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+                <div class="row mission_col">  
+
+                 
+                <p> {{rocket_name}} </p>
+                    </div>
+                    <div class="row mission_col">  
+
+                 <div class="col-xl-1">
+                     <a href="{{internet}}" target="_blank"><img src="../../../assets/image 2.png"></a>
+                 </div>
+                 <div class="col-xl-1">
+                    <a href="{{wiki}}" target="_blank"><img src="../../../assets/image 3.png"></a>
+                </div>
+                <div class="col-xl-1">
+                    <a href="{{youtube}}" target="_blank"><img src="../../../assets/image 4.png"></a>
+                </div>
+                </div>
+                  
+            </div>
+            </div>
+          
+        </div>
+         
+        </div>
+        <div class="modal-body">
+            <div class="col-xl-12 detailscontent">
+                {{details}} <a href="{{wiki}}" target="_blank">Wikipedia</a><br>
+            </div>
+            
+            <table >
+             <div class="row tablerow">
+               <div class="col-xl-4">
+                   <th>Flight Number</th> 
+                   </div>   
+                   <div class="col-xl-4">
+                    <td>{{flightno}}</td>  
+                   </div>
+           
+            </div>
+            <div class="row tablerow">
+                <div class="col-xl-4">
+                 <th> Mission Name</th> 
+                </div>  
+                <div class="col-xl-4">
+           <td>{{mission_name}}</td>  
+            </div> 
+        </div>
+        <div class="row tablerow">
+            <div class="col-xl-4">
+            <th>Rocket Type</th> 
+            </div>
+            <div class="col-xl-4">
+            <td>{{rocket_type}}</td>  
+               </div> 
+               </div> 
+               <div class="row tablerow">
+                <div class="col-xl-4">
+                   <th> Rocket Name</th> 
+                   </div>
+                   <div class="col-xl-4">
+                <td>{{rocket_name}}</td>
+                </div>  
+               </div>  
+               <div class="row tablerow">
+                <div class="col-xl-4">
+                   <th>Manufacturer</th> 
+                   </div>
+                   <div class="col-xl-4">
+                <td>{{manufacturer}}</td>
+                </div>  
+               </div> 
+               <div class="row tablerow">
+                <div class="col-xl-4">
+                   <th>Nationality</th> 
+                   </div>
+                   <div class="col-xl-4">
+                <td>{{nationality}}</td> 
+                </div> 
+               </div> 
+               <div class="row tablerow">
+                <div class="col-xl-4">
+                   <th>Launch Date</th> 
+                   </div>
+                   <div class="col-xl-4">
+                    <td>{{launchdate | date:'dd MMMM YYYY hh:mm'}}</td>
+                    </div>  
+               </div> 
+               <div class="row tablerow">
+                <div class="col-xl-4">
+                   <th>Payload Type</th> 
+                   </div>
+                   <div class="col-xl-4">
+                <td>{{payload_type}}</td>
+                </div>
+               </div> 
+               <div class="row tablerow">
+                <div class="col-xl-4">
+                   <th>Launch Date</th>
+                   </div>
+                   <div class="col-xl-4"> 
+                <td>{{nationality}}</td>
+                </div>  
+               </div>  
+               <div class="row tablerow">
+                <div class="col-xl-4">
+                   <th>Orbit</th> 
+                   </div>
+                   <div class="col-xl-4">
+                <td>{{orbit}}</td>  
+                </div>
+               </div> 
+               <div class="row tablerow1">
+                <div class="col-xl-4">
+                   <th>Launch Site</th> 
+                   </div>
+                   <div class="col-xl-4">
+                <td>{{launch_site}}</td> 
+                </div> 
+               </div>     
+            </table>
+        
+     
+        
+       
+       
+        
+        
+     
+        </div>
+        
+      </div>
+    </div>
+  </div>
+<!--View Launch Details Modal Box Ends-->
+
+
+
+    </tr>
+
+</table>
+
+</div>
+<pagination-controls class="pagination"  [maxSize]="maxSize" boundary-links-numbers="true" [directionLinks]="directionLinks"
+
+[responsive]="responsive" [autoHide]="autoHide"previousLabel="" nextLabel=""  (pageChange)="p = $event" (pageBoundsCorrection)="p = $event" id="first"></pagination-controls>

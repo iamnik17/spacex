@@ -1,0 +1,206 @@
+.upcomingcol
+{width:80px;
+    border-radius:50px !important;
+    background:rgb(224, 194, 94);
+    color: rgb(192, 117, 18);
+    margin-left:50px;
+   
+}
+.launchsuccol
+{width:80px;
+    border-radius:50px !important;
+    background:rgb(164, 184, 212);
+    color:rgb(23, 63, 122);
+    margin-left:50px;
+   
+}
+.launchfail
+{  width:80px;
+    border-radius:50px !important;
+    background:pink;
+   margin-left:50px;
+    color: rgb(180, 28, 28);
+  
+   
+}
+.main{
+    border:1px solid #ccc;
+    border-radius:10px !important;
+    margin-top:10px;
+   width:990px;
+   height:646px;
+   margin-left:180px;
+}
+ .header_class{
+     background:rgb(221, 218, 218);
+     border:none ;
+     
+ }
+ .row_class{
+    margin-bottom: 15rem !important;
+    
+ }
+.spacing{ 
+    width:500px;
+  font-size:14px;
+  height:45px;
+  text-align:center;
+border:none;
+}
+
+.spclspacing{ 
+    margin-top: 15px;
+    width:500px;
+ 
+   
+    text-align:center;
+   
+}
+.spclspacing2{ 
+ 
+    width:80px;
+  
+    text-align:center;
+  
+}
+.color_td{
+    background:white;
+}
+.color_th{
+    background:rgb(182, 179, 179);
+    border-radius:10px !important;
+}
+.img-logo{
+    height:50px;
+    width:50px;
+}
+.col-xl-9{
+    margin-left:50px;
+}
+.mission_col{
+    width:100%;
+    height:35%;
+    margin-right:5px;
+ 
+}
+/* .modal-dialog{
+    width:544px !important;
+    height:740px !important;
+} */
+
+.modal-content{
+    width:544px;
+    height:auto;
+   
+} 
+.btn-close{
+  float:inline-end
+  
+}
+.tablerow{
+    width:500px;
+    border-bottom:1px solid #ccc;
+    margin-bottom:20px;
+    margin-top:20px;
+    padding-bottom:4px;
+}
+.tablerow1{
+    width:500px;
+    margin-bottom:10px;
+    margin-top:20px;
+    padding-bottom:4px;
+    border-bottom:none;
+}
+.modal-header{
+    border: none !important;
+    margin-bottom:none;
+}
+.modal-body{
+    margin-bottom:5px;
+    font-size:14px;
+}
+.detailscontent{
+    font-size:14px;
+}
+.detailscontent a{
+    text-decoration:none;
+   color:blue;
+}
+.pagination{
+    width:100%;
+  margin-left:900px;
+  color:rgb(77, 75, 75);
+}
+.pagination ::ng-deep .ngx-pagination a {
+    border:1px solid #ccc;
+    margin-top:10px;
+  }
+  .pagination ::ng-deep .ngx-pagination .pagination-previous.disabled::before,.pagination ::ng-deep .ngx-pagination .pagination-previous a::before
+    {
+    content: '<';
+    display: inline-block;
+    margin-right: 0.5rem;
+  
+}
+.pagination ::ng-deep.ngx-pagination .pagination-next a::after,.pagination ::ng-deep  .ngx-pagination .pagination-next.disabled::after {
+    content: '>';
+    display: inline-block;
+    margin-left: 0.5rem;
+   
+}
+.pagination ::ng-deep.ngx-pagination .disabled {
+    padding: 0.1875rem 0.625rem;
+    color: #cacaca;
+    cursor: default; border:1px solid #ccc;
+}
+.filterlaunches{
+margin-left:750px;
+
+ width:300px;
+}
+.nocolor{
+    background: transparent;
+    border:none;
+}
+.modal-content{
+    width:600px;
+    /* font-size:15px; */
+}
+.demo-inline-calendar-card {
+    width: 300px;
+    font-size:12px;
+    color:black;
+  }
+  
+.filtermonths{
+  
+    width:500px;
+    border:none;
+    margin-left:90px;
+   
+}
+
+.form-control{
+    width:200px;
+    height:20px;
+    font-size:14px;
+    border:none;
+    caret-color:transparent;
+    border:none;
+}
+.iclass{
+padding-left:20px;
+margin-left:80px;
+border:none;
+
+}
+.col-xl-1{
+  margin-right:0px !important;
+   padding-right:0px !important;
+}
+.iclass2{
+    padding-right:0px;border:none;
+  margin-right:80px;
+  border:none;
+    }
+  

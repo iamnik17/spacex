@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import * as moment from 'moment';
 import { DaterangepickerDirective } from 'ngx-daterangepicker-material';
 import { Launches } from '../launches/launches.model';
@@ -15,7 +15,7 @@ export class DatePickerComponent implements OnInit {
   data:Launches[]=[];
   public launches:any=[];
   selected: any={startDate:moment,endDate:moment}
-  
+  @Output() date = new EventEmitter<any>();  
   
   alwaysShowCalendars: boolean;
   ranges: any = {
@@ -42,26 +42,35 @@ isInvalidDate = (m: moment.Moment) =>  {
   }
   getlaunches(){
     const res = this.launcheservice.getlaunchesData();
-    res.subscribe((res:Launches[]) => {
-      this.filter =this.launches = res;
-      console.log(this.launches)
-    });
-    this.launcheservice.data.subscribe((item:any) => {
-      this.data = item;
+    // res.subscribe((res:Launches[]) => {
+    //   this.filter =this.launches = res;
+    //   console.log(this.launches)
+
+    // this.launcheservice.data.subscribe((item:any) => {
+    //   this.data = item;
      
-    });
+    // });
   }
   dateRangeCreated(appliedfilters:any){
-    console.log(appliedfilters);
-    // console.log(event);
-    this.filter=this.launches
-  //  this.pickerDirective.open()
-  //  console.log(event.startDate);
-   console.log(this.selected.startDate._d);
+    
+      
+      console.log(this.selected.startDate._d.toLocaleDateString());
+      console.log(this.selected.endDate._d.toLocaleDateString());   
+    
+    
+    
+    
+    
+ 
    
+ 
+   
+
+
+}
   
    
 
 
-  }
- }
+}
+ 
