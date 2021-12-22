@@ -99,7 +99,7 @@ this.route.params.subscribe(x=> console.log(x))
    this.route.params.subscribe(c => {console.log(c);
     if(c['launchType'] !== undefined){
          this.launch_success= c['launchType'];
-         console.log(c['launchType'],"nik");
+         console.log(c['launchType']);
 
     }
    if(c['start'] !== undefined){
@@ -116,7 +116,7 @@ this.route.params.subscribe(x=> console.log(x))
   }
    } else  {
     if(c['launchType'] !== undefined && c['launcheType']=='all'){
-      this.launcheservice[c['launchType']](c['start'],c['end']).subscribe(x=>
+      this.launcheservice[c['launchType']]().subscribe(x=>
         this.filter = this.launches = x);
     }else{
     const res = this.launcheservice.getlaunchesData(c['start'],c['end']);
