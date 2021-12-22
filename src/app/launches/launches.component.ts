@@ -99,6 +99,7 @@ this.route.params.subscribe(x=> console.log(x))
    this.route.params.subscribe(c => {console.log(c);
     if(c['launchType'] !== undefined){
          this.launch_success= c['launchType'];
+         console.log(c['launchType'],"nik");
 
     }
    if(c['start'] !== undefined){

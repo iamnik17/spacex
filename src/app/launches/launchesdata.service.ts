@@ -61,7 +61,7 @@ all(start?:string,end?: string){
   return this.http.get<Launches[]>('https://api.spacexdata.com/v3/launches');
  }else 
   {
- return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches`)
+ return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches?launch_success=${false}&launch_success=${true}`)
  }
 }
 
