@@ -20,7 +20,7 @@ export class LaunchesdataService {
     return this.http.get<Launches[]>('https://api.spacexdata.com/v3/launches');
    }else 
     {
-   return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches?start=${start}&end=${end}`)
+   return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches?start=${start}&end=${end}&launch_success=true&launch_success=${false}`)
    }
     
   }
@@ -31,7 +31,7 @@ export class LaunchesdataService {
     return this.http.get<Launches[]>('https://api.spacexdata.com/v3/launches');
    }else 
     {
-   return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches?launch_success=${false}`)
+   return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches?launch_success=false`)
    }
    
     
@@ -42,7 +42,7 @@ export class LaunchesdataService {
     return this.http.get<Launches[]>('https://api.spacexdata.com/v3/launches');
    }else 
     {
-   return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches?launch_success=${true}`)
+   return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches?launch_success=true`)
    }
 }
 
@@ -61,7 +61,7 @@ all(start?:string,end?: string){
   return this.http.get<Launches[]>('https://api.spacexdata.com/v3/launches');
  }else 
   {
- return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches?launch_success=${false}&launch_success=${true}`)
+ return this.http.get<Launches[]>(`https://api.spacexdata.com/v3/launches?launch_success=false&launch_success=true`)
  }
 }
 

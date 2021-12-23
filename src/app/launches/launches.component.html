@@ -1,169 +1,167 @@
 <!-- <p>launches works!</p> -->
 
-<div class="container" style="width: 1300px; overflow-y: hidden;">
+<div class="container" style="width:200%; ">
   <!-- <app-date-picker class="date"  (date)="datechange($event)"></app-date-picker> -->
-              <div class="col-xl-12" style="top: 50px; bottom: -10px;" >
-              <i class="fa fa-calendar" aria-hidden="true">
-                  <input type="text"
-                  ngxDaterangepickerMd
-                  [showCustomRangeLabel]="true"
-                  [alwaysShowCalendars]="true"
-                  [ranges]="ranges"
-                  [linkedCalendars]="true"
-                  [isInvalidDate] = "isInvalidDate"
-                  [showClearButton]="true"
-                  (change)="dateRangeCreated($event)" 
-                  placeholder="Select a date..."/>
+  <div class="row">
+  <div class="col float-left" style="top: 50px; bottom: -10px;">
+    <i class="fa fa-calendar" aria-hidden="true">
+      <input type="text" ngxDaterangepickerMd [showCustomRangeLabel]="true" [alwaysShowCalendars]="true"
+        [ranges]="ranges" [linkedCalendars]="true" [isInvalidDate]="isInvalidDate" [showClearButton]="true"
+        (change)="dateRangeCreated($event)" placeholder="Select a date..." />
 
-              </i>
-              <!-- {{selected.startDate._d}} -->
-              </div>
+    </i>
+    <!-- {{selected.startDate._d}} -->
+  </div>
 
 
-        <div class="row">
-          <span class="col-xs-1"  style="bottom: 20px;margin-left: 980px; " class="lanch col-xl-6">All Launches</span>&nbsp;&nbsp;&nbsp;
-          <app-filter  class="btn col-xs-2"style="color:gray; position: absolute; left:195px; top:  75px;"
-
-          [list]="filterList" 
-          (onFilterChange)="filterChange($event)" >
-          </app-filter> 
-        </div>
-
-<div class="table-responsive">
-  <table class="table" style="width:100%; table-layout: fixed;">
- 
-    <thead >
-      <tr>
-        <th data-label="no" style="width: 51px;" scope="row" > No.  </th>
-        <th data-label="Launch (UTC)" style="width: 131px;">Launch (UTC)</th>
-        <th data-label="Location" style="width: 121px;">Location</th> 
-        <th data-label="Mission" style="width: 90px;"> Mission</th>
-        <th data-label="Orbit" style="width: 100px;">Orbit</th>
-        <th data-label="Launch Status" style="width: 100px;"> Launches Status</th>
-        <th data-label="Rocket" style="width: 100px;"> Rocket </th>
-      </tr>
-   
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let ans of filter  | paginate: { itemsPerPage: 10, currentPage: page,totalItems:totalLength }
-     " (click)="modal(template,ans)">
-        <td scope="row" data-label="No"  style="overflow: hidden; text-overflow: ellipsis;">{{ans.flight_number}}</td>
-        <td data-label="Launch(UTC)" >{{ans.launch_date_utc | date : 'd MMMM y'}} {{ans.launch_date_utc | date :
-          'HH:mm'}}</td>
-        <td data-label="Location">{{ans.launch_site.site_name}}</td>
-        <td data-label="Mission">{{ans.mission_name}}</td>
-        <td data-label="Orbit">{{ans['rocket']['second_stage']['payloads'][0]['orbit']}}</td>
-        <td data-label=" Success" style="margin-left: 20px;" class="badge"  [ngClass]="{'danger':(!ans.launch_success && !ans.upcoming),'success':ans.launch_success,'warning':ans.upcoming}">{{ans.upcoming === true?
-          'Upcoming' : ans.launch_success === true ?'Success':'failed'}}</td>
-        <td data-label="Rocket">{{ans.rocket.rocket_name}}</td>
-        
-     </tr>
-    </tbody>
-     <!-- <ng-container *ngif="active===i"> -->
-      <!-- <app-dropdowndata class="dropdown" title="Actions" input="1"></app-dropdowndata> -->
-    <!-- </ng-container> -->
-     
-
-    
-    <!-- loader -->
-            <div class="card-body" *ngIf="loading">
-              <div id="preloader"></div>
-            </div>
-  </table>
+  
+  <div class="col ">
+    <!-- <span  class="lanch span">All Launches</span>&nbsp;&nbsp;&nbsp; -->
+    <app-filter class="btn filter"  [list]="filterList"
+      (onFilterChange)="filterChange($event)">
+    </app-filter>
+  </div>
 </div>
+  <div>
+    <table class="table" >
+      <thead>
+        <tr>
+          <th data-label="no" style="width: 51px;" scope="row"> No. </th>
+          <th data-label="Launch (UTC)" style="width: 131px;">Launch (UTC)</th>
+          <th data-label="Location" style="width: 121px;">Location</th>
+          <th data-label="Mission" style="width: 90px;"> Mission</th>
+          <th data-label="Orbit" style="width: 100px;">Orbit</th>
+          <th data-label="Launch Status" style="width: 100px;"> Launches Status</th>
+          <th data-label="Rocket" style="width: 100px;"> Rocket </th>
+        </tr>
 
-<pagination-controls class="pagination " (pageChange)="page = $event"></pagination-controls>
-    <!-- </div> -->
-    <ng-template #template>
-      <div class="modal-header">
-        <h4 class="modal-title pull-left">Modal</h4>
-        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
-          <span aria-hidden="true" class="visually-hidden">&times;</span>
-        </button>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let ans of filter  | paginate: { itemsPerPage: 10, currentPage: page,totalItems:totalLength }
+     " (click)="modal(template,ans)">
+          <td scope="row" data-label="No" style="overflow: hidden; text-overflow: ellipsis;">{{ans.flight_number}}</td>
+          <td data-label="Launch(UTC)">{{ans.launch_date_utc | date : 'd MMMM y'}} {{ans.launch_date_utc | date :
+            'HH:mm'}}</td>
+          <td data-label="Location">{{ans.launch_site.site_name}}</td>
+          <td data-label="Mission">{{ans.mission_name}}</td>
+          <td data-label="Orbit">{{ans['rocket']['second_stage']['payloads'][0]['orbit']}}</td>
+          <td data-label=" Success" style="margin-left: 20px;" class="badge"
+            [ngClass]="{'danger':(!ans.launch_success && !ans.upcoming),'success':ans.launch_success,'warning':ans.upcoming}">
+            {{ans.upcoming === true?
+            'Upcoming' : ans.launch_success === true ?'Success':'failed'}}</td>
+          <td data-label="Rocket">{{ans.rocket.rocket_name}}</td>
+
+        </tr>
+      </tbody>
+      <!-- <ng-container *ngif="active===i"> -->
+      <!-- <app-dropdowndata class="dropdown" title="Actions" input="1"></app-dropdowndata> -->
+      <!-- </ng-container> -->
+
+
+
+      <!-- loader -->
+      <div class="card-body" *ngIf="loading">
+        <div id="preloader"></div>
       </div>
-      <div class="modal-body table-responsive">
-        <!-- {{details.launch_success}} -->
-        <table class="row table">
-          <div class="col-xl-3">
-        <img class="img"    src="{{details.links.mission_patch}}">
+    </table>
+  </div>
+
+  <pagination-controls class="pagination " (pageChange)="page = $event"></pagination-controls>
+  <!-- </div> -->
+
+</div>
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body table-responsive">
+    <!-- {{details.launch_success}} -->
+    <table class="row table">
+      <div class="col-3">
+        <img class="img" src="{{details.links.mission_patch}}">
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          {{details.mission_name}}
+
         </div>
-        
-          <div class="row">
-            <div class="col-xl-4">
-              {{details.mission_name}}
-              
-          </div>
-          <div class="col-xl-2">
-            <span class="badge" [ngClass]="{'danger':(!details.launch_success && !details.upcoming),'success':details.launch_success,'warning':details.upcoming}">{{details.upcoming === true?
-              'Upcoming' : details.launch_success === true ?'Success':'failed'}}</span>
-          </div>
-       
+        <div class="col-2">
+          <span class="badge"
+            [ngClass]="{'danger':(!details.launch_success && !details.upcoming),'success':details.launch_success,'warning':details.upcoming}">{{details.upcoming
+            === true?
+            'Upcoming' : details.launch_success === true ?'Success':'failed'}}</span>
+        </div>
 
-          </div>
-        
-          <tbody class="col-xl-10">
-            {{details.details}}
-            <a href="{{details.links.wikipedia}}">wikipedia</a>
-            <!-- <link value="wikipedia" href="{{details.links.wikipedia}}"> -->
 
-            <tr>
-              <td>
-              <span style="font-style: normal;"> Flight_number</span> :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.flight_number}}
-              
-               
-              </td>
-              <hr>
-            </tr>
-            <tr>
-              <td>
-               Mission_name :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.mission_name}}
-              
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Rocket_type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.rocket_type}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Rocket:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.rocket_name}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Manifacturer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.second_stage.payloads[0].manufacturer}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Nationality:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.second_stage.payloads[0].nationality}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Launch_date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.launch_date_utc}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Payload-type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.second_stage.payloads[0].payload_type}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Orbit:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.second_stage.payloads[0].orbit}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Launch_site:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.launch_site.site_name}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        
       </div>
-    </ng-template>
-   </div>
+
+      <tbody class="col-10">
+        {{details.details}}
+        <a href="{{details.links.wikipedia}}">wikipedia</a>
+        <!-- <link value="wikipedia" href="{{details.links.wikipedia}}"> -->
+
+        <tr>
+          <td>
+            <span style="font-style: normal;"> Flight_number</span>
+            :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.flight_number}}
+
+
+          </td>
+          <hr>
+        </tr>
+        <tr>
+          <td>
+            Mission_name :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.mission_name}}
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Rocket_type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.rocket_type}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Rocket:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.rocket_name}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Manifacturer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.second_stage.payloads[0].manufacturer}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Nationality:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.second_stage.payloads[0].nationality}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Launch_date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.launch_date_utc}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Payload-type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.second_stage.payloads[0].payload_type}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Orbit:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.second_stage.payloads[0].orbit}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Launch_site:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.launch_site.site_name}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</ng-template>
