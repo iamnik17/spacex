@@ -332,17 +332,18 @@ table-responsive{
 .table-responsive{
   // width: 100vw;
 
-  width: 350px;
+  // width: 350px;
 }
-th{
-  width: 45px;
 }
-td{
-  width: 45px;
+table tbody tr th{
+  width: 25px;
+}
+table tbody tr td{
+  width: 35px;
 }
 
 
-}
+
 //    .container{
 //      width: 500px;
 
