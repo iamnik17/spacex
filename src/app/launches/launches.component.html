@@ -1,6 +1,6 @@
 <!-- <p>launches works!</p> -->
 
-<div class="container"  >
+<div class="container" style="width: 1350px;" >
 <div class="row">
   <div class="col float-left" style="top: 50px; bottom: -10px;">
     <i class="fa fa-calendar" aria-hidden="true">
@@ -13,7 +13,7 @@
 
 </div>
   
-  <div class="col ">
+    <div class="col ">
     <!-- <span  class="lanch span">All Launches</span>&nbsp;&nbsp;&nbsp; -->
     <app-filter class="btn"  [list]="filterList"
       (onFilterChange)="filterChange($event)">
@@ -21,27 +21,27 @@
      </div>
   
  
-    <table class="table-responsive" >
-      <thead>
-        <tr>
-          <th style="width: 51px;" scope="row"> No. </th>
-          <th  style="width: 131px;">Launch (UTC)</th>
-          <th style="width: 121px;">Location</th>
-          <th  style="width: 90px;"> Mission</th>
-          <th  style="width: 100px;">Orbit</th>
-          <th  style="width: 100px;"> Launches Status</th>
-          <th  style="width: 100px;"> Rocket </th>
+    <table class="table-responsive" role="table" id="TobeApplied">
+      <thead role="rowgroup">
+        <tr role="row">
+          <th role="columnheader" style="width: 51px;" scope="row"> No. </th>
+          <th role="columnheader" style="width: 131px;">Launch (UTC)</th>
+          <th role="columnheader" style="width: 121px;">Location</th>
+          <th role="columnheader"  style="width: 90px;"> Mission</th>
+          <th role="columnheader" style="width: 100px;">Orbit</th>
+          <th role="columnheader" style="width: 100px;"> Launches Status</th>
+          <th role="columnheader" style="width: 100px;"> Rocket </th>
         </tr>
 
       </thead>
 
-      <tbody>
-        <tr *ngFor="let ans of filter  | paginate: { itemsPerPage: 10, currentPage: page,totalItems:totalLength }
+      <tbody role="rowgroup">
+        <tr role="row" *ngFor="let ans of filter  | paginate: { itemsPerPage: 10, currentPage: page,totalItems:totalLength }
      " (click)="modal(template,ans)">
-          <td scope="row" data-label="No" style="overflow: hidden; text-overflow: ellipsis;">{{ans.flight_number}}</td>
-          <td data-label="Launch(UTC)">{{ans.launch_date_utc | date : 'd MMMM y'}} {{ans.launch_date_utc | date :
+          <td role="cell" scope="row" data-label="No" style="overflow: hidden; text-overflow: ellipsis;">{{ans.flight_number}}</td>
+          <td role="cell" data-label="Launch(UTC)">{{ans.launch_date_utc | date : 'd MMMM y'}} {{ans.launch_date_utc | date :
             'HH:mm'}}</td>
-          <td data-label="Location">{{ans.launch_site.site_name}}</td>
+          <td role="cell" data-label="Location">{{ans.launch_site.site_name}}</td>
           <td data-label="Mission">{{ans.mission_name}}</td>
           <td data-label="Orbit">{{ans['rocket']['second_stage']['payloads'][0]['orbit']}}</td>
           <td data-label=" Success" style="margin-left: 20px;" class="badge"
@@ -52,19 +52,14 @@
 
         </tr>
       </tbody>
-      <!-- <ng-container *ngif="active===i"> -->
-      <!-- <app-dropdowndata class="dropdown" title="Actions" input="1"></app-dropdowndata> -->
-      <!-- </ng-container> -->
-
-
-
+    </table>
       <!-- loader -->
-                                <div class="card-body" *ngIf="loading">
+                                  <div class="card-body" *ngIf="loading">
                                   <div id="preloader"></div>
                                 </div>
-    </table>
+    
   
-
+  
   <pagination-controls class="pagination " (pageChange)="page = $event"></pagination-controls>
   <!-- </div> -->
 
