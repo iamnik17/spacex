@@ -321,12 +321,16 @@ color: rgba(3, 84, 63, 1);
 table-responsive{
   background-color: yellow;
 }
-@media screen and ( max-width:450px){
+@media screen and ( max-width:500px){
 
 .container{
   // display: block;
   width: 800px;
   display: block;
+
+}
+thead{
+  width: 400px;
 
 }
 .table-responsive{
