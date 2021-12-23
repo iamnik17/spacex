@@ -317,8 +317,27 @@ color: rgba(3, 84, 63, 1);
 }
 
 
+} 
+table-responsive{
+  background-color: yellow;
 }
-// @media screen and ( max-width:550px){
+@media only screen and ( max-width:450px){
+
+.container{
+  // display: block;
+  overflow-x: auto;
+  display: block;
+
+}
+.table{
+  // width: 100vw;
+
+  width: 350px;
+}
+
+
+
+}
 //    .container{
 //      width: 500px;
 
@@ -401,6 +420,7 @@ color: rgba(3, 84, 63, 1);
 //   // }
 //   }
   @media screen and ( max-width:790px){
+    
     .pagination{
       display: flex;
    justify-content: right;

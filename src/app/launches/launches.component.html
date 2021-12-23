@@ -1,8 +1,7 @@
 <!-- <p>launches works!</p> -->
 
-<div class="container" style="width:200%; ">
-  <!-- <app-date-picker class="date"  (date)="datechange($event)"></app-date-picker> -->
-  <div class="row">
+<div class="container"  >
+<div class="row">
   <div class="col float-left" style="top: 50px; bottom: -10px;">
     <i class="fa fa-calendar" aria-hidden="true">
       <input type="text" ngxDaterangepickerMd [showCustomRangeLabel]="true" [alwaysShowCalendars]="true"
@@ -10,20 +9,19 @@
         (change)="dateRangeCreated($event)" placeholder="Select a date..." />
 
     </i>
-    <!-- {{selected.startDate._d}} -->
   </div>
 
-
+</div>
   
   <div class="col ">
     <!-- <span  class="lanch span">All Launches</span>&nbsp;&nbsp;&nbsp; -->
-    <app-filter class="btn filter"  [list]="filterList"
+    <app-filter class="btn"  [list]="filterList"
       (onFilterChange)="filterChange($event)">
     </app-filter>
-  </div>
-</div>
-  <div>
-    <table class="table" >
+     </div>
+  
+ 
+    <table class="table-responsive" >
       <thead>
         <tr>
           <th data-label="no" style="width: 51px;" scope="row"> No. </th>
@@ -61,16 +59,15 @@
 
 
       <!-- loader -->
-      <div class="card-body" *ngIf="loading">
-        <div id="preloader"></div>
-      </div>
+                                <div class="card-body" *ngIf="loading">
+                                  <div id="preloader"></div>
+                                </div>
     </table>
-  </div>
+  
 
   <pagination-controls class="pagination " (pageChange)="page = $event"></pagination-controls>
   <!-- </div> -->
 
-</div>
 <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Modal</h4>
@@ -165,3 +162,4 @@
 
   </div>
 </ng-template>
+</div>
