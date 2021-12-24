@@ -13,6 +13,10 @@ align-items: center;
 
 color: #1F2937;
 }
+.logo{
+  // text-align: center;
+  margin-left: 360px;
+}
 table{
   // width: 100%;
 }
@@ -323,6 +327,7 @@ table-responsive{
 }
 
 @media screen and ( max-width:480px){
+  
   .pagination1{
     // display: flex;
     // justify-content: right;
@@ -339,7 +344,7 @@ table-responsive{
   // display: block;
   width: 100%;
   left: -30px;
-  overflow-y: hidden;
+  overflow-x: hidden;
   zoom:35%;
   // display: block;
 
@@ -351,7 +356,7 @@ thead{
 .table-responsive1{
  width: 600px;
 //  background-color: red;
-
+overflow-x: hidden;
 padding-right: -25px;
 }
 
