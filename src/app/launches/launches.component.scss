@@ -14,27 +14,27 @@ align-items: center;
 color: #1F2937;
 }
 table{
-  width: 100%;
+  // width: 100%;
 }
 .table-responsive{
-  overflow-y: hidden;
+  // overflow-y: hidden;
   // overflow-x: hidden;
 }
 
 
 //////////////////end responsive//////////
 .table-container {
-    background-color: #fff;
-    box-shadow: 0 2px 5px 0 rgba(255,255,255);
-    position: fixed;
-    overflow-y: hidden;
+    // background-color: #fff;
+    // box-shadow: 0 2px 5px 0 rgba(255,255,255);
+    // position: fixed;
+    // overflow-y: hidden;
 
   }
   
   table {
-    border-collapse: collapse;
-    table-layout: fixed;
-    width: 100%;
+    // border-collapse: collapse;
+    // table-layout: fixed;
+    // width: 100%;
   }
   
   td,
@@ -319,24 +319,28 @@ color: rgba(3, 84, 63, 1);
 
 } 
 table-responsive{
-  background-color: yellow;
+  // background-color: yellow;
 }
+
 @media screen and ( max-width:480px){
-  .pagination{
-    display: flex;
-    justify-content: right;
-    margin-top: 10px;
+  .pagination1{
+    // display: flex;
+    // justify-content: right;
+    // margin-top: 10px;
     width: 450px;
-    margin-left: 0px;
-    left: 101px;
-    border: 1px solid lightgray;
-  padding-top: 10px;
+   margin-left:526px;
+    // left: -112px;
+    border: 1px solid black;
+    padding-top: 10px;
     border-radius: 5px;
   }
 
-.container{
+.container1{
   // display: block;
-  width: 800px;
+  width: 100%;
+  left: -30px;
+  overflow-y: hidden;
+  zoom:35%;
   // display: block;
 
 }
@@ -344,128 +348,53 @@ thead{
   // width: 400px;
 
 }
-.table-responsive{
-  // width: 100vw;
-  // background-color: yellow;
+.table-responsive1{
+ width: 600px;
+//  background-color: red;
 
-  width: 950px;
-  zoom:40%
-    
-}
-}
-#TobeApplied th{
-  // width: 10px;
-}
-#TobeApplied td{
-  // width: 55px;
+padding-right: -25px;
 }
 
-    .filter{
-           padding: 2px;
-           left:-20px;
-      
-           margin-left:280px;
-      
-           bottom: 2px;
+}
+
+  .float-left{
+          // bottom: -50px;
+          padding-bottom: 25px;
+          // margin-left: 180px;
         }
 
+        .filter1{
+          margin-left: -25px;
+          left:800px;
+          margin-bottom: 30px;
+        }
 
-
-//    .container{
-//      width: 500px;
-
-//    }
-//   .table{width: 500px;}
-//   .filter{
-//     padding: 2px;
-//     left:-270px;
-
-//     margin-left:280px;
-
-//     bottom: 2px;
-//   }
-//   .span{
-//   position: relative;
-//   padding: 2px;
-//   left:-580px;
-//   margin-left:-70px;
-
-//   }
-//   .pagination{
-//    display: flex;
-//    justify-content: right;
-//    margin-top: 10px;
-//    width: 500px;
-//    margin-left: -110px;
-//    left: -10px;
-//    border: 1px solid lightgray;
-//    padding-top: 10px;
-//    border-radius: 5px;
-//   }
-//   // table thead{
-//   //   display: none;
-    
-//   // }
-//   // table tbody table tbody tr{
-//   //   display: block;
-//   //   width: 100%;
-    
-//   // }
-//   // table tbody tr td::before,table tbody tr td ::before {
-//   //   content: attr(data-label);
-//   //   display: block;
-//   //   color:rgba(5,57,94,.5);;
-//   //   font-weight: normal;
-//   // }
-//   // table tbody tr td,
-//   // // {
-//   // //   display: block;
-//   // //   width: 50%;
-//   // //   float: left;
-//   // //   font-size: 16px;
-//   // //   color: rgba(5,57,94,.5);
-//   // //   font-weight: 700;
-  
-  
-//   // // }
-//   // table tbody tr th{
-//   //   display: block;
-//   //   width: 40%;
-//   //   float: left;
-//   //   font-size: 16px;
-//   //   color: rgba(5,57,94,1);
-//   //   font-weight: 700;
-  
-//   // }
-//   // table tbody tr{
-//   //   margin-bottom :16px;
-//   //   // float:left;
-//   //   clear: both;
-//   //   box-shadow: 0px 4px 20px rgba(5,57,94,.5);
-//   //   -moz-box-shadow:0px 4px 20px rgba(5,57,94,.5);
-//   //   -webkit-box-shadow:0px 4px 20 rgba(5,57,94,.5);
-//   // }
-//   // .pagination{
-//   //   position: absolute;
-//   //   margin-left: 15px;
-  
-  
-//   // }
-//   }
-   @media screen and ( max-width:790px){
-    
-    .pagination{
-      display: flex;
-   justify-content: right;
-    margin-top: 10px;
-  width: 700px;
-  margin-left: -110px;
-    left: -10px;
-    border: 1px solid lightgray;
-    padding-top: 10px;
-    border-radius: 5px;
-
-     }
-
-
-   }
+ @media screen and (min-width:480px)and( max-width:780px){
+          .table-responsive1{
+            // background-color: red;
+            
+            width: 900px;
+          }
+          .table1{
+            width:800px;
+          }
+        //   .pagination{
+        //     display: flex;
+        //  justify-content: right;
+        //   margin-top: 10px;
+        // width: 700px;
+        // margin-left: -110px;
+        //   left: -10px;
+        //   border: 1px solid lightgray;
+        //   padding-top: 10px;
+        //   border-radius: 5px;
+        
+        //    }
+        //    .container{
+        //      width: 100%;
+        //      overflow-x: auto;
+        
+        //    }
+        
+        
+         }

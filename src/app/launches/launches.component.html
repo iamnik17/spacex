@@ -1,6 +1,6 @@
 <!-- <p>launches works!</p> -->
 
-<div class="container" style="width: 1350px;" >
+<div class="container container1" style="width: 1320px;" >
 <div class="row">
   <div class="col float-left" style="top: 50px; bottom: -10px;">
     <i class="fa fa-calendar" aria-hidden="true">
@@ -15,22 +15,23 @@
   
     <div class="col ">
     <!-- <span  class="lanch span">All Launches</span>&nbsp;&nbsp;&nbsp; -->
-    <app-filter class="btn filter"  [list]="filterList"
+    <app-filter class="btn filter filter1"  [list]="filterList"
       (onFilterChange)="filterChange($event)">
     </app-filter>
      </div>
   
  
-    <table class="table-responsive" role="table" id="TobeApplied">
+
+    <table class="table-responsive table-responsive1 table1" role="table" id="TobeApplied" style="border: solid 1px; width: 1000px; ">
       <thead role="rowgroup">
         <tr role="row">
-          <th role="columnheader" style="width: 51px;" scope="row"> No. </th>
-          <th role="columnheader" style="width: 131px;">Launch (UTC)</th>
-          <th role="columnheader" style="width: 121px;">Location</th>
-          <th role="columnheader"  style="width: 90px;"> Mission</th>
+          <th role="columnheader" style="width: 101px;" scope="row"> No. </th>
+          <th role="columnheader" style="width: 210px;">Launch (UTC)</th>
+          <th role="columnheader" style="width: 170px;">Location</th>
+          <th role="columnheader"  style="width:190px;"> Mission</th>
           <th role="columnheader" style="width: 100px;">Orbit</th>
-          <th role="columnheader" style="width: 100px;"> Launches Status</th>
-          <th role="columnheader" style="width: 100px;"> Rocket </th>
+          <th role="columnheader" style="width: 170px;"> Launches Status</th>
+          <th role="columnheader" style="width: 170px;"> Rocket </th>
         </tr>
 
       </thead>
@@ -60,7 +61,7 @@
     
   
   
-  <pagination-controls class="pagination " (pageChange)="page = $event"></pagination-controls>
+  <pagination-controls class="pagination pagination1 " (pageChange)="page = $event"></pagination-controls>
   <!-- </div> -->
 
 <ng-template #template>
