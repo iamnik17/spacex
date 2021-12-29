@@ -13,7 +13,6 @@ import { DropdowndataComponent } from './dropdowndata/dropdowndata.component';
 import { GenericListFilterModule } from 'generic-list-filter';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { DatePickerComponent } from './date-picker/date-picker.component';
-import { ModelcontentComponent } from './modelcontent/modelcontent.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
@@ -22,9 +21,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
+// import { MatInputModule } from '@angular/material/input';
+// import { MatDatepickerModule } from '@angular/material/datepicker';
+// import { MatMomentDateModule } from '@angular/material-moment-adapter';
+// import { SpxFilterComponent } from './spx-filter/spx-filter.component';
+// import { SpxTableComponent } from './spx-table/spx-table.component';
+// import { SpxDetailsModelComponent } from './spx-details-model/spx-details-model.component';
 // import{DemoMaterialModule}from'@angular/material'
 // import {DemoMaterialModule} from './material-module';
 
@@ -32,6 +34,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 // import {MatDatepickerModule} from '@angular/material/datepicker';
 // import{MatInputModule}from'@angular/material/input'
 // import { MatFormFieldModule } from '@angular/material/form-field';
+
 // import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
@@ -42,8 +45,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     DatatimePipe,
     DropdowndataComponent,
     DatePickerComponent,
-    ModelcontentComponent,
     HeaderComponent,
+    
     // FilterComponent
   ],
   imports: [
@@ -58,17 +61,17 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
-    // ModalModule,
+    ModalModule,
     // MatDialog,
     // MatDatepickerModule,MatInputModule,
     // MatFormFieldModule, 
-    // MatNativeDateModule,
+    MatNativeDateModule,
     NgxDaterangepickerMd.forRoot(),
     BsDatepickerModule.forRoot(),
       BrowserAnimationsModule,
-    MatInputModule, 
-    MatDatepickerModule,
-    MatMomentDateModule,
+    // MatInputModule, 
+    // MatDatepickerModule,
+    // MatMomentDateModule,
   ],
 
   providers: [],

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Launches } from './launches.model';
 import { LaunchesdataService } from './launchesdata.service';
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { ModelcontentComponent } from '../modelcontent/modelcontent.component';
+
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
@@ -96,6 +96,15 @@ export class LaunchesComponent implements OnInit {
     this.active = null;
   }
   getlaunches() {
+    // this.ranges = {
+    //   'Today': [moment(), moment()],
+    //   'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+    //   'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+    //   'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+    //   'This Month': [moment().startOf('month'), moment().endOf('month')],
+    //   'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+    //   'All Launches':[moment(), moment()]
+    // }
     this.route.params.subscribe(c => {
       console.log(c);
       if (c['launchType'] !== undefined) {
@@ -116,7 +125,7 @@ export class LaunchesComponent implements OnInit {
           });
         }
       } else {
-        if (c['launchType'] !== undefined && c['launcheType'] == 'all') {
+        if (c['launchType'] !== undefined && c['launcheType'] !== 'all') {
           this.launcheservice[c['launchType']]().subscribe(x =>
             this.filter = this.launches = x);
         } else {
@@ -169,7 +178,7 @@ export class LaunchesComponent implements OnInit {
     this.ifus = !this.ifus
   }
   selected: any = { startDate: moment, endDate: moment }
-  dateRangeCreated(event: any) {
+  datesUpdated(event: any) {
 
     console.log("event", event);
     // this.date.emit({
@@ -181,10 +190,7 @@ export class LaunchesComponent implements OnInit {
     // )
 
     this.routebyfilter(event.startDate._d.toLocaleDateString(), event.endDate._d.toLocaleDateString());
-    // this.launcheservice.getlaunchesData(this.selected.startDate._d.toLocaleDateString(),this.selected.endDate._d.toLocaleDateString()).subscribe(
-    //     x=>     this.filter =this.launches = x
-    //     )
-    //     console.log(this.filter);
+    
 
   }
   routebyfilter(start?: any, end?: any) {
@@ -208,5 +214,11 @@ export class LaunchesComponent implements OnInit {
     }
   }
 }
+/**
+ * all launches [];
+ * asort by date 
+ * a[0].date, a[a.length-1].date
+ * 
+ */
 
 
