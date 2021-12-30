@@ -92,88 +92,124 @@
     </div>
     <div class="modal-body table-responsive">
       <!-- {{details.launch_success}} -->
-      <table class="row table">
-        <div class="col-3">
-          <img class="img" src="{{details.links.mission_patch}}">
-        </div>
-
-        <div class="row">
-          <div class="col-4">
-            {{details.mission_name}}
-
+      <table class="row" style="overflow-x: hidden;">
+        <div class="col-xl-4">
+     <img src="{{details.links.mission_patch_small}}" style="margin-left: 35px; width: 100px;"  >
+      </div>
+      
+        <thead  style="color: #1F2937;  font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px; ">
+          <div class="col-xl-4 colour" style=" font-size: 14px;
+          line-height: 16px;margin-bottom: 8px; " >{{details.mission_name}}<br>{{details.rocket.rocket_name}}<br>
+                   <span class="danger" [ngClass]="{'badge-primary ':(!details.launch_success && !details.upcoming ),'success':details.launch_success,'warning':details.upcoming}" style="border-radius: 10px; align-items: center;padding: 9px;margin-top: 10px; ">{{details.upcoming === true?
+                    'Upcoming' : details.launch_success === true ?'Success':'failed'}}</span>
           </div>
-          <div class="col-2">
-            <span class="badge"
-              [ngClass]="{'danger':(!details.launch_success && !details.upcoming),'success':details.launch_success,'warning':details.upcoming}">{{details.upcoming
-              === true?
-              'Upcoming' : details.launch_success === true ?'Success':'failed'}}</span>
-          </div>
-
-
-        </div>
-
-        <tbody class="col-10">
+          
+          <!-- <hr> -->
+        </thead>
+        <tbody  style="color: #1F2937;  font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        align-items: center;
+        line-height: 20px;
+        left: 32px; margin-left: 35px; flex-direction: column; " >
+          <!-- style="flex-direction: column;" -->
           {{details.details}}
-          <a href="{{details.links.wikipedia}}">wikipedia</a>
-          <!-- <link value="wikipedia" href="{{details.links.wikipedia}}"> -->
-
-          <tr>
-            <td>
-              <span style="font-style: normal;"> Flight_number</span>
-              :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.flight_number}}
-
-
-            </td>
-            <hr>
-          </tr>
-          <tr>
-            <td>
-              Mission_name :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.mission_name}}
-
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Rocket_type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.rocket_type}}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Rocket:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.rocket_name}}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Manifacturer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.second_stage.payloads[0].manufacturer}}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Nationality:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.second_stage.payloads[0].nationality}}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Launch_date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.launch_date_utc}}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Payload-type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.second_stage.payloads[0].payload_type}}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Orbit:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.rocket.second_stage.payloads[0].orbit}}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Launch_site:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.launch_site.site_name}}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <a href="{{details.links.wikipedia}}"> wikipedia</a>
+        <div class="row tablerow " style="background-color: white;">
+          <div class="col-xl-4">
+              <th>Flight Number</th> 
+              </div>   
+              <div class="col-xl-4">
+               <td>{{details.flight_number}}</td>  
+              </div>
+      
+       </div>
+       <div class="row tablerow">
+           <div class="col-xl-4">
+            <th> Mission Name</th> 
+           </div>  
+           <div class="col-xl-4">
+      <td>{{details.mission_name}}</td>  
+       </div> 
+   </div>
+   <div class="row tablerow">
+       <div class="col-xl-4">
+       <th>Rocket Type</th> 
+       </div>
+       <div class="col-xl-4">
+       <td>{{details.rocket.rocket_type}}</td>  
+          </div> 
+          </div> 
+          <div class="row tablerow">
+           <div class="col-xl-4">
+              <th> Rocket Name</th> 
+              </div>
+              <div class="col-xl-4">
+           <td>{{details.rocket.rocket_name}}</td>
+           </div>  
+          </div>  
+          <div class="row tablerow">
+           <div class="col-xl-4">
+              <th>Manufacturer</th> 
+              </div>
+              <div class="col-xl-4">
+           <td>{{details.rocket.second_stage.payloads[0].manufacturer}}</td>
+           </div>  
+          </div> 
+          <div class="row tablerow">
+           <div class="col-xl-4">
+              <th>Nationality</th> 
+              </div>
+              <div class="col-xl-4">
+           <td>{{details.rocket.second_stage.payloads[0].nationality}}</td> 
+           </div> 
+          </div> 
+          <div class="row tablerow">
+           <div class="col-xl-4">
+              <th>Launch Date</th> 
+              </div>
+              <div class="col-xl-4">
+               <td>{{details.launch_date_utc}}</td>
+               </div>  
+          </div> 
+          <div class="row tablerow">
+           <div class="col-xl-4">
+              <th>Payload Type</th> 
+              </div>
+              <div class="col-xl-4">
+           <td>{{details.rocket.second_stage.payloads[0].payload_type}}</td>
+           </div>
+          </div> 
+          <div class="row tablerow">
+           <div class="col-xl-4">
+              <th>Launch Date</th>
+              </div>
+              <div class="col-xl-4"> 
+           <td>{{details.rocket.second_stage.payloads[0].nationality}}</td>
+           </div>  
+          </div>  
+          <div class="row tablerow">
+           <div class="col-xl-4">
+              <th>Orbit</th> 
+              </div>
+              <div class="col-xl-4">
+           <td>{{details.rocket.second_stage.payloads[0].orbit}}</td>  
+           </div>
+          </div> 
+          <div class="row tablerow1">
+           <div class="col-xl-4">
+              <th>Launch Site</th> 
+              </div>
+              <div class="col-xl-4">
+           <td>{{details.launch_site.site_name}}</td> 
+           </div> 
+          </div>     
+       </table>
 
     </div>
   </ng-template>

@@ -28,29 +28,30 @@ export class LaunchesComponent implements OnInit {
   alwaysShowCalendars: boolean;
   ranges: any = {
     'Past week': [
-      moment().subtract(1, 'year').startOf('year'),
+      moment().subtract(1, 'year').startOf('week'),
       moment().subtract(1, 'week').endOf('week'),
     ],
     'Past month': [
-      moment().subtract(1, 'month').startOf('month'),
-      moment().subtract(1, 'month').endOf('month'),
+      moment().subtract(12, 'month').startOf('month'),
+      moment().subtract(11, 'month').endOf('month'),
     ],
     'Past 3 months': [
-      moment().subtract(3, 'months').startOf('month'),
-      moment().subtract(1, 'month').endOf('month'),
+      moment().subtract(15, 'months').startOf('month'),
+      moment().subtract(12, 'month').endOf('month'),
     ],
     'Past 6 months': [
-      moment().subtract(6, 'month').startOf('month'),
-      moment().subtract(1, 'month').endOf('month'),
+      moment().subtract(18, 'month').startOf('month'),
+      moment().subtract(12, 'month').endOf('month'),
     ],
     'Past year': [
-      moment().subtract(1, 'year').startOf('year'),
-      moment().subtract(1, 'month').endOf('month'),
+      moment().subtract(2, 'year').startOf('year'),
+      moment().subtract(1, 'year').endOf('year'),
     ],
     'Past 2 years': [
-      moment().subtract(2, 'year').startOf('year'),
-      moment().subtract(1, 'month').endOf('month'),
+      moment().subtract(3, 'year').startOf('year'),
+      moment().subtract(2, 'month').endOf('month'),
     ],
+    
   }
   invalidDates: moment.Moment[] = [moment().add(2, 'days'), moment().add(3, 'days'), moment().add(5, 'days')];
 
@@ -77,6 +78,14 @@ export class LaunchesComponent implements OnInit {
   data: Launches[] = [];
   offset = 0;
   limit = 10;
+  localeConfig = {
+    format: 'MM/DD/YYYY',
+    displayFormat: 'DD MMM y',
+    direction: 'ltr',
+    separator: ' To ',
+    cancelLabel: 'Cancel',
+    customRangeLabel: 'Custom range',
+  };
   //  active = null;
   @Input() list: any;
   @Output() onFilterChange = new EventEmitter();
@@ -114,6 +123,7 @@ export class LaunchesComponent implements OnInit {
     this.active = null;
   }
   getlaunches() {
+    // console.log(moment);
     // this.ranges = {
     //   'Today': [moment(), moment()],
     //   'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
