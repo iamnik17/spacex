@@ -22,6 +22,7 @@ export class LaunchesComponent implements OnInit {
     launch_success: ['failed', 'success', 'upcoming', 'all'],
   };
   details: any;
+ 
   // loading:boolean;
   // success: boolean | undefined;
 
