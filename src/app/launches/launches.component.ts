@@ -6,6 +6,7 @@ import { LaunchesdataService } from './launchesdata.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
+import { DaterangepickerDirective } from 'ngx-daterangepicker-material';
 
 @Component({
   selector: 'app-launches',
@@ -59,6 +60,7 @@ export class LaunchesComponent implements OnInit {
     return this.invalidDates.some(d => d.isSame(m, 'day'))
     // console.log(this.invalidDates);
   }
+  pickerDirective: DaterangepickerDirective;
   constructor(private launcheservice: LaunchesdataService,
     private modalService: BsModalService,
     private router: Router,
@@ -114,6 +116,9 @@ export class LaunchesComponent implements OnInit {
     this.modalRef = this.modalService.show(template, Object.assign({ backdrop: 'static', class: 'modal-md bg-blue' }));
     console.log("nikhils")
   }
+  openDatepicker(){
+    this.pickerDirective.open();
+  }
   closeModal() {
     this.modalRef?.hide();
     this.details = undefined
@@ -122,6 +127,9 @@ export class LaunchesComponent implements OnInit {
   mouseLeave(input: any) {
     this.active = null;
   }
+
+  
+
   getlaunches() {
     // console.log(moment);
     // this.ranges = {
@@ -205,6 +213,7 @@ export class LaunchesComponent implements OnInit {
   button_clk() {
     this.ifus = !this.ifus
   }
+  
   selected: any = { startDate: moment, endDate: moment }
   datesUpdated(event: any) {
 
