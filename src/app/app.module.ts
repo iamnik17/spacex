@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule,HttpClient} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './footer/footer.component';
+// import { FooterComponent } from './footer/footer.component';
 import { LaunchesComponent } from './launches/launches.component';
-import { PaginationComponent } from './pagination/pagination.component';
+// import { PaginationComponent } from './pagination/pagination.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DatatimePipe } from './datatime.pipe';
-import { DropdowndataComponent } from './dropdowndata/dropdowndata.component';
+// import { DropdowndataComponent } from './dropdowndata/dropdowndata.component';
 // import { FilterComponent } from './filter/filter.component';
-import { GenericListFilterModule } from 'generic-list-filter';
+import { GenericListFilterModule,GenericListFilterComponent } from 'generic-list-filter';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
-import { DatePickerComponent } from './date-picker/date-picker.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
-import { HeaderComponent } from './header/header.component';
+// import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 // import { MatInputModule } from '@angular/material/input';
 // import { MatDatepickerModule } from '@angular/material/datepicker';
 // import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -39,14 +39,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
+    // FooterComponent,
     LaunchesComponent,
-    PaginationComponent,
+    // PaginationComponent,
     DatatimePipe,
-    DropdowndataComponent,
-    DatePickerComponent,
-    HeaderComponent,
-    
+    // DropdowndataComponent,
+    // DatePickerComponent,
+    // HeaderComponent,
+  
     // FilterComponent
   ],
   imports: [
@@ -75,6 +75,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
 
   providers: [],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

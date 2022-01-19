@@ -6,7 +6,7 @@
   </a>
   <div class="row">
     <div class="col-xl-12 calender" style="justify-content: left; top: 20px;bottom: 30px; margin-bottom: 10px;" >
-      <i class="material-icons date-range-icon ngx-daterangepicker-action" (click)="openDatepicker()"> date_range </i>
+      <!-- <i class="material-icons date-range-icon ngx-daterangepicker-action" (click)="openDatepicker()"> date_range </i> -->
      
       <!-- <app-filter class="filter"[list]="filterList" (onFilterChange)="filterChange($event)"  > </app-filter> -->
       <!-- <i class="material-icons date-range-icon ngx-daterangepicker-action" (click)="openDatepicker()" style="margin-top: 5px;"> date_range </i> -->
@@ -15,7 +15,6 @@
       type="text"
       ngxDaterangepickerMd
       [showCustomRangeLabel]="true"
-      [(ngModel)]="selected"
       [showRangeLabelOnInput]="true"
       [alwaysShowCalendars]="true"
       [linkedCalendars]="true"
@@ -28,7 +27,7 @@
       #dtpicker
       readonly
     />
-    <i class="material-icons arrow-down-icon ngx-daterangepicker-action" (click)="openDatepicker()"> keyboard_arrow_down </i>
+    <!-- <i class="material-icons arrow-down-icon ngx-daterangepicker-action" (click)="openDatepicker()"> keyboard_arrow_down </i> -->
    
 </div>
 <div class="row">

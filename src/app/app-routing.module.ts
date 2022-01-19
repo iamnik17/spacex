@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FilterComponent } from './filter/filter.component';
+// import { FilterComponent } from './filter/filter.component';
 import { LaunchesComponent } from './launches/launches.component';
 
 const routes: Routes = [
@@ -9,7 +9,7 @@ const routes: Routes = [
   {path:"launches/:start/:end/:launchType",component:LaunchesComponent},
   {path:"launches/:launchType",component:LaunchesComponent},
 
-  {path:"filter",component:FilterComponent}
+  // {path:"filter",component:FilterComponent}
 ];
 
 @NgModule({

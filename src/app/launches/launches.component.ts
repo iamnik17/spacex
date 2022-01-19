@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Launches } from './launches.model';
 import { LaunchesdataService } from './launchesdata.service';
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -14,20 +14,9 @@ import { DaterangepickerDirective } from 'ngx-daterangepicker-material';
   styleUrls: ['./launches.component.scss']
 })
 export class LaunchesComponent implements OnInit {
-  loading = false;
-  modalRef?: BsModalRef;
-  // loading:boolean;
-  launch_success = 'all';
-  filterList = {
-    launch_success: ['failed', 'success', 'upcoming', 'all'],
-  };
-  details: any;
- 
-  // loading:boolean;
-  // success: boolean | undefined;
-
-  // dataSource = ELEMENT_DATA;
+  selected:any= { startDate: moment, endDate: moment }
   alwaysShowCalendars: boolean;
+
   ranges: any = {
     'Past week': [
       moment().subtract(1, 'year').startOf('week'),
@@ -55,32 +44,25 @@ export class LaunchesComponent implements OnInit {
     ],
     
   }
-  invalidDates: moment.Moment[] = [moment().add(2, 'days'), moment().add(3, 'days'), moment().add(5, 'days')];
-
-  isInvalidDate = (m: moment.Moment) => {
-    return this.invalidDates.some(d => d.isSame(m, 'day'))
-    // console.log(this.invalidDates);
-  }
-  pickerDirective: DaterangepickerDirective;
-  constructor(private launcheservice: LaunchesdataService,
-    private modalService: BsModalService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
-    this.alwaysShowCalendars = true;
-  }
-  // selected: {start: Moment, end: Moment};
-  public launches: any = [];
-  totalLength: any;
-  filter: any;
-  page: number = 1;
-  public length: any;
-  active = null;
-  ifus: boolean = true;
-
-  data: Launches[] = [];
-  offset = 0;
-  limit = 10;
+  loading = false;
+  modalRef?: BsModalRef;
+  // loading:boolean;
+  launch_success = 'all';
+  filterList = {
+    launch_success: ['failed', 'success', 'upcoming', 'all'],
+  };
+  // modalRef?: BsModalRef;
+  // title:any;
+  //filter
+  filter:any;
+    appliedfilters: any;
+    // loading:boolean=false;
+    // spaceData:any;
+    details: any;
+    // enabled: boolean;
+    // opened: boolean;
+    // expectOne: any;
+  // details: any;
   localeConfig = {
     format: 'MM/DD/YYYY',
     displayFormat: 'DD MMM y',
@@ -89,45 +71,63 @@ export class LaunchesComponent implements OnInit {
     cancelLabel: 'Cancel',
     customRangeLabel: 'Custom range',
   };
+  
+  invalidDates: moment.Moment[] = [moment().add(2, 'days'), moment().add(3, 'days'), moment().add(5, 'days')];
+
+  // pickerDirective: DaterangepickerDirective;
+  constructor(public launcheservice: LaunchesdataService,
+    public modalService: BsModalService,
+    public router: Router,
+    public route: ActivatedRoute
+  ) {
+    
+  }
+  
+  // selected: {start: Moment, end: Moment};
+  
+  public launches:any=[];
+  totalLength:any;
+  page:number = 1;
+   public length:any;
+
+   data:Launches[]=[];
+   filtertarget:any; 
+   inputSizes: {};
+  offset = 0;
+  limit = 10;
+  
   //  active = null;
   @Input() list: any;
   @Output() onFilterChange = new EventEmitter();
+  // @ViewChild(DaterangepickerDirective, { static: false }) pickerDirective: DaterangepickerDirective;
 
-  ngOnInit(): void {
-    console.log('la unches', this.launch_success)
+  ngOnInit():void {
+    // console.log('la unches', this.launch_success)
     this.getlaunches();
-    this.route.params.subscribe(x => console.log(x))
+    this.alwaysShowCalendars = true;
+    this.route.params.subscribe(x =>
+        console.log(x)
+        )
 
   }
-  /**
-   * {
-   * start:gfgfgf,
-   * end: ghjgjgkj,
-   * filtertype: hfghf,
-   * }
-   * 
-   */
+  
 
-  mouseEnter(input: any) {
-    this.active = input;
-  }
+  // mouseEnter(input: any) {
+  //   this.active = input;
+  // }
 
-  modal(template: any, ans: any) {
+  modal(template:any=null,ans:any=null) {
     this.details = ans;
     this.modalRef = this.modalService.show(template, Object.assign({ backdrop: 'static', class: 'modal-md bg-blue' }));
-    console.log("nikhils")
+    // console.log("nikhils")
   }
-  openDatepicker(){
-    this.pickerDirective.open();
-  }
+  
   closeModal() {
     this.modalRef?.hide();
     this.details = undefined
   }
 
-  mouseLeave(input: any) {
-    this.active = null;
-  }
+  
 
   
 
@@ -143,10 +143,10 @@ export class LaunchesComponent implements OnInit {
     //   'All Launches':[moment(), moment()]
     // }
     this.route.params.subscribe(c => {
-      console.log(c);
+      // console.log(c);
       if (c['launchType'] !== undefined) {
         this.launch_success = c['launchType'];
-        console.log(c['launchType']);
+        // console.log(c['launchType']);
 
       }
       if (c['start'] !== undefined) {
@@ -158,7 +158,7 @@ export class LaunchesComponent implements OnInit {
           const res = this.launcheservice.getlaunchesData(c['start'], c['end']);
           res.subscribe((res: Launches[]) => {
             this.filter = this.launches = res;
-            console.log(this.launches)
+            // console.log(this.launches)
           });
         }
       } else {
@@ -169,7 +169,7 @@ export class LaunchesComponent implements OnInit {
           const res = this.launcheservice.getlaunchesData(c['start'], c['end']);
           res.subscribe((res: Launches[]) => {
             this.filter = this.launches = res;
-            console.log(this.launches)
+            // console.log(this.launches)
           });
         }
       }
@@ -181,15 +181,40 @@ export class LaunchesComponent implements OnInit {
 
     // });
   }
-  datechange(date: any) {
-    console.log(date);
-  }
+
+  // datechange(date: any=null) {
+    // console.log(date);
+  // }
+  startDate:any;
+  endDate:any;
+
+      // dateRangeCreated(event:any=null) { 
+        // this.startDate;
+        // this.endDate; 
+               // this.pickerDirective.open();
+        // console.log(event)
+        // console.log(this.selected.startDate._d.toLocaleDateString(),this.selected.endDate._d.toLocaleDateString())
+        // start:this.selected.startDate._d.toLocaleDateString(),
+      
+        // this.launcheservice.getlaunchesData(this.selected)
+        // this.routebyfilter(event.startDate._d.toLocaleDateString(),event.endDate._d.toLocaleDateString());
+        // console.log(e);
+            // this.filter = this.filter;  
+            // new Date(this.startDate) && new Date(this.endDate)
+       
+        // console.log(e[0]);
+        // this.filter = this.launches.filter(m => {
+          
+        //   console.log(m);
+        // }  )  
+       
+          // }
 
   copyData = this.launches;
-  filterChange(appliedfilters: any) {
+  filterChange(appliedfilters:any) {
     debugger
     this.copyData = this.launches
-    console.log(appliedfilters);
+    // console.log(appliedfilters);
     this.launch_success = appliedfilters.appliedFilterValues.launch_success;
 
     this.routebyfilter();
@@ -211,14 +236,15 @@ export class LaunchesComponent implements OnInit {
     */
 
   }
-  button_clk() {
-    this.ifus = !this.ifus
-  }
+  // button_clk() {
+  //   this.ifus = !this.ifus
+  // }
   
-  selected: any = { startDate: moment, endDate: moment }
-  datesUpdated(event: any) {
+  // selected: any = { startDate: moment, endDate: moment }
+  public _d:any;
+  datesUpdated(event:any=null) {
 
-    console.log("event", event);
+    // console.log("event", event);
     // this.date.emit({
     //   start:this.selected.startDate._d.toLocaleDateString(),
     //   end:this.selected.endDate._d.toLocaleDateString(),
@@ -231,13 +257,15 @@ export class LaunchesComponent implements OnInit {
     
 
   }
+  // startDate:any;
+  // endDate:any;
   routebyfilter(start?: any, end?: any) {
     if (start !== undefined) {
-      console.log(start, end, this.launch_success)
+      // console.log(start, end, this.launch_success)
       this.router.navigate(['/launches', start, end, this.launch_success])
     } else {
       this.route.params.subscribe(x => {
-        console.log(x);
+        // console.log(x);
         if (x['start'] !== undefined) {
           this.router.navigate(['/launches', x['start'], x['end'], this.launch_success])
         }
